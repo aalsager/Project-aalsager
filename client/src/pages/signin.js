@@ -18,8 +18,12 @@ export default function SignIn(){
             body: JSON.stringify(form)
         }).then((res) => {
             if(res.status === 200){
-                localStorage.setItem('isSignedIn', 'true')
-                window.location.href = '/'
+                res.json().then(payload => {
+                    console.log(payload)
+                    
+                    localStorage.setItem('auth-token', payload.token)
+                    window.location.href = '/'
+                })
             }else{
                 console.log(res)
             }
