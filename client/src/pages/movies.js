@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 const URL = process.env.REACT_APP_URL;
 
 export default function Movies() {
+    // States for managing loading status and movies list
     const [loading, setLoading] = useState(true);
     const [movies, setMovies] = useState([]);
-
+    // Fetch movies data on component mount
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -28,7 +29,7 @@ export default function Movies() {
 
         fetchData();
     }, []);
-
+    // Render loading message or movies grid
     return (
         loading ? <div>Loading...</div> :
         <div className='w-full grid grid-cols-4 gap-8 px-4 py-8'>

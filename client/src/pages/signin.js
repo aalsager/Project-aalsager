@@ -17,6 +17,7 @@ export default function SignIn(){
             },
             body: JSON.stringify(form)
         }).then((res) => {
+            // Check for HTTP status 200 (OK)
             if(res.status === 200){
                 res.json().then(payload => {
                     console.log(payload)
@@ -29,7 +30,7 @@ export default function SignIn(){
             }
         }).catch((err) => console.log(err))
     }
-
+    // Render the sign-in form
     return (
         <div className='h-screen w-screen flex items-center justify-center flex-col'>
             <h2 className="text-xl mb-4 font-semibold">Sign In</h2>

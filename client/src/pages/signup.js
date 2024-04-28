@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
+// Retrieve the base API URL from environment variables
 const URL = process.env.REACT_APP_URL
 
 export default function SignUp(){
+    // State to store form data (username and password)
     const [form, setForm] = useState({
         username: '',
         password: '',
@@ -11,14 +13,16 @@ export default function SignUp(){
 
     function handleSubmit(){
         fetch(`${URL}/signup`, {
-            method: 'POST',
+            method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(form)
         }).then((res) => {
+            //Check if the response status is 200 
             if(res.status === 200){
                 window.location.href = '/signin'
+                // Redirect the user to sign-in page when successfully signing up
             }else{
                 console.log(res)
             }
