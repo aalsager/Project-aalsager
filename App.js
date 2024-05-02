@@ -1,14 +1,16 @@
 document.getElementById('budgetForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const description = document.getElementById('description').value;
+    const title = document.getElementById('title').value;
     const amount = parseFloat(document.getElementById('amount').value);
-    addBudgetEntry(description, amount);
+    const description = document.getElementById('description').value;
+    addBudgetEntry(title, amount, description);
     document.getElementById('description').value = '';
     document.getElementById('amount').value = '';
+    document.getElementById('description').value = '';
 });
 
-function addBudgetEntry(description, amount) {
+function addBudgetEntry(title, amount, description) {
     const entryDiv = document.createElement('div');
-    entryDiv.textContent = `${description}: $${amount.toFixed(2)}`;
+    entryDiv.textContent = `${title}: $${amount.toFixed(2)}: ${description}`;
     document.getElementById('budgetList').appendChild(entryDiv);
 }
